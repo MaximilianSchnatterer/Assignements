@@ -16,4 +16,4 @@ sudoku = [
 
 solver = SudokuSolver(sudoku)
 
-SudokuSolver.solve(solver)
+print(SudokuSolver.compute_sub_grid_index(solver,1))

@@ -17,6 +17,16 @@ class SudokuSolver(object):
             index += 1
         return
         
+    def compute_column(self,column_index):
+        self.column = []
+        for elements in range(0,9):
+            self.column.append(self.sudoku[elements][column_index])
+        return self.column
+
+    def compute_sub_grid_index(self,index):
+        index_from = int(index/3)*3
+        index_to = int(index/3)*3+3
+        return (index_from,index_to)
 
     def check_is_solved(self):
         
