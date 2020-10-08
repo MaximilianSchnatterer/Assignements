@@ -16,7 +16,34 @@ class SudokuSolver(object):
             SudokuSolver.print_solution(self)
             index += 1
         return
-        
+
+    def check_in_row(self, row_index, number):
+        if number in self.sudoku[row_index]:
+            check = True
+        else: 
+            check = False
+        return check
+  
+    def check_in_column(self, column_index, number):
+        if number in SudokuSolver.compute_column(self, column_index):
+            check = True
+        else: 
+            check = False
+        return check
+ 
+    def check_in_subgrid(self, row_index, column_index, number):
+        for row_elements in range(SudokuSolver.compute_sub_grid_index(self, column_index)[0],SudokuSolver.compute_sub_grid_index(self, column_index)[1]):
+            for column_elements in range(SudokuSolver.compute_sub_grid_index(self, row_index)[0],SudokuSolver.compute_sub_grid_index(self, row_index)[1]):
+                if number == self.sudoku[row_elements][column_elements]:
+                    check = True
+                    break
+                else:
+                    check = False
+            
+            if check == True:
+                break
+        return  check
+
     def compute_column(self,column_index):
         self.column = []
         for elements in range(0,9):
@@ -26,7 +53,7 @@ class SudokuSolver(object):
     def compute_sub_grid_index(self,index):
         index_from = int(index/3)*3
         index_to = int(index/3)*3+3
-        return (index_from,index_to)
+        return (index_from, index_to)
 
     def check_is_solved(self):
         
