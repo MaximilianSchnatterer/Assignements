@@ -16,3 +16,5 @@ sudoku = [
 
 
 solver = SudokuSolver(sudoku)
+
+SudokuSolver.print_solution(solver)
