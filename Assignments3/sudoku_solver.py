@@ -11,17 +11,22 @@ class SudokuSolver(object):
 
     def solve(self):
         index = 0
-        while self.is_solved == False & index < 82:
-            SudokuSolver.check_is_solved()
-            SudokuSolver.print_solution()
+        while not self.is_solved and index<81:
+            SudokuSolver.check_is_solved(self)
+            SudokuSolver.print_solution(self)
             index += 1
+        return
         
 
     def check_is_solved(self):
-        if all(self.sudoku) == 0:
-            self.is_solved = False
-        else:
-            self.is_solved = True
+        
+        for elements in range(0,9):
+            if all(self.sudoku[elements]) == False:
+                self.is_solved = False
+                break
+            else:
+                self.is_solved = True
+
         return
 
     def print_solution(self):

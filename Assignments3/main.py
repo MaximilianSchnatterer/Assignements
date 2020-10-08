@@ -14,7 +14,6 @@ sudoku = [
 [0, 0, 0, 0, 8, 0, 0, 7, 9]]
 
 
-
 solver = SudokuSolver(sudoku)
 
-SudokuSolver.print_solution(solver)
+SudokuSolver.solve(solver)
