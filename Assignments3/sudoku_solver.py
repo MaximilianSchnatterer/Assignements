@@ -12,8 +12,16 @@ class SudokuSolver(object):
     def solve(self):
         index = 0
         while not self.is_solved and index<81:
-            SudokuSolver.check_is_solved(self)
-            SudokuSolver.print_solution(self)
+            for row_index in range(0,9):
+                for column_index in range(0,9):
+                    if self.sudoku[row_index][column_index] > 0:
+                        continue
+
+                    numbers = self.compute_possible_numbers(row_index, column_index)
+                    if len(numbers) == 1:
+                        self.insert_number(row_index, column_index,numbers[0])
+            self.check_is_solved()
+            self.print_solution()
             index += 1
         return
 

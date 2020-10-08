@@ -15,5 +15,5 @@ sudoku = [
 
 
 solver = SudokuSolver(sudoku)
-
-print(SudokuSolver.compute_possible_numbers(solver,2,0))
+SudokuSolver.solve(solver)
+#print(SudokuSolver.compute_possible_numbers(solver,4,1))
