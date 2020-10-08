@@ -95,6 +95,3 @@ class SudokuSolver(object):
             index += 1
         print()
         return
-
-
-
