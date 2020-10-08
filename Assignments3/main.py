@@ -16,4 +16,3 @@ sudoku = [
 
 solver = SudokuSolver(sudoku)
 SudokuSolver.solve(solver)
-#print(SudokuSolver.compute_possible_numbers(solver,4,1))

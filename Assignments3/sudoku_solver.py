@@ -17,10 +17,11 @@ class SudokuSolver(object):
                     if self.sudoku[row_index][column_index] > 0:
                         continue
 
-                    numbers = self.compute_possible_numbers(row_index, column_index)
-                    if len(numbers) == 1:
-                        self.insert_number(row_index, column_index,numbers[0])
+                    posnumbers = self.compute_possible_numbers(row_index, column_index)
+                    if len(posnumbers) == 1:
+                        self.insert_number(row_index, column_index, posnumbers[0])
             self.check_is_solved()
+            print(f'Iteration {index}')
             self.print_solution()
             index += 1
         return
@@ -52,8 +53,8 @@ class SudokuSolver(object):
         return check
  
     def check_in_subgrid(self, row_index, column_index, number):
-        for row_elements in range(SudokuSolver.compute_sub_grid_index(self, column_index)[0],SudokuSolver.compute_sub_grid_index(self, column_index)[1]):
-            for column_elements in range(SudokuSolver.compute_sub_grid_index(self, row_index)[0],SudokuSolver.compute_sub_grid_index(self, row_index)[1]):
+        for column_elements in range(SudokuSolver.compute_sub_grid_index(self, column_index)[0],SudokuSolver.compute_sub_grid_index(self, column_index)[1]):
+            for row_elements in range(SudokuSolver.compute_sub_grid_index(self, row_index)[0],SudokuSolver.compute_sub_grid_index(self, row_index)[1]):
                 if number == self.sudoku[row_elements][column_elements]:
                     check = True
                     break
