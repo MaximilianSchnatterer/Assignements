@@ -17,6 +17,18 @@ class SudokuSolver(object):
             index += 1
         return
 
+
+    def compute_possible_numbers(self, row_index, column_index):
+        posnumbers = []
+        for number in range(1, 10):
+            if not(self.check_in_row(row_index, number)or self.check_in_column(column_index, number)or self.check_in_subgrid(row_index, column_index, number)):
+                posnumbers.append(number)
+        return posnumbers
+
+    def insert_number(self, row_index, column_index, number):
+        self.sudoku[row_index][column_index] = number
+        return
+    
     def check_in_row(self, row_index, number):
         if number in self.sudoku[row_index]:
             check = True
