@@ -1,4 +1,4 @@
-class States(objekt):
+class States(object):
 
     OFF = 'off'
     RED = 'red'
