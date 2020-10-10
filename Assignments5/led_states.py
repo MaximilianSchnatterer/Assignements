@@ -7,9 +7,15 @@ class LedStates(object):
         return
 
     def all_off(self):
+        for pin in self.leds.values():
+            pin.value(0)
         return
 
-    def toggle_led(self):
+    def toggle_led(self, key):
+        if self.leds[key].value() == False:
+            self.led[key].value(1)
+        else:
+            self.led[key].value(0)
         return
 
     def off(self):
