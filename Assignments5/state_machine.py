@@ -17,4 +17,14 @@ class Robot(object):
         self.last_state, self.state = self.state_machine[self.state](self.last_state, self.state)
         return
 
+    def start(self):
+        self.main_ticker = br_timer.ticker(self.ticker_number, self.main_frequency, self.run, True)
+        self.main_ticker.start()
+        return
+
+    def stop(self):
+        self.main_ticker.stop()
+        return
+
+
 
