@@ -7,6 +7,14 @@ class Robot(object):
         self.ticker_number = ticker_number
         self.main_frequency = main_frequency
         self.main_ticker = None
-        
+        self.led_states = LedStates()
+        self.last_state = None
+        self.state = States.RED
+        self.state_machine = {States.OFF : self.led_states.off, States.RED : self.led_states.red, States.ORANGE : self.led_states.orange, States.GREEN : self.led_states.green}
         return
+
+    def run(self):
+        self.last_state, self.state = self.state_machine[self.state](self.last_state, self.state)
+        return
+
 

@@ -18,15 +18,15 @@ class LedStates(object):
             self.led[key].value(0)
         return
 
-    def off(self):
-        return
+    def off(self, last_state, state):
+        return last_state, state
     
-    def red(self):
-        return
+    def red(self, last_state, state):
+        return last_state, state
 
-    def orange(self):
-        return
+    def orange(self, last_state, state):
+        return last_state, state
 
-    def green(self):        
-        return
+    def green(self, last_state, state):        
+        return last_state, state
 
