@@ -19,14 +19,60 @@ class LedStates(object):
         return
 
     def off(self, last_state, state):
+    # Entry action       
+        if last_state is not state:
+            self.all_off()
+            last_state = state
         return last_state, state
     
     def red(self, last_state, state):
+        # Entry action       
+        if last_state is not state:
+            self.all_off()
+            last_state = state
+            index = 0
+
+        # Action: toggle. Leads to blink in same state
+        self.toggle_led("red")
+        index += 1
+
+        # State guard
+        if index == 10:
+            state = States.ORANGE
+
         return last_state, state
 
     def orange(self, last_state, state):
+            # Entry action       
+        if last_state is not state:
+            self.all_off()
+            last_state = state
+            index = 0
+
+        # Action: toggle. Leads to blink in same state
+        self.toggle_led("orange")
+        index += 1
+
+        # State guard
+        if index == 10:
+            state = States.GREEN
+        
         return last_state, state
 
-    def green(self, last_state, state):        
+    def green(self, last_state, state):   
+            # Entry action       
+        if last_state is not state:
+            self.all_off()
+            last_state = state
+            index = 0
+
+        # Action: toggle. Leads to blink in same state
+        self.toggle_led("green")
+        index += 1
+
+        # State guard
+        if index == 10:
+            state = States.RED
+
         return last_state, state
 
